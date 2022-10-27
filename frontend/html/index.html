@@ -4,8 +4,43 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="../javascript/app.js"></script>
+    <script type="module" src="../javascript/testing.js"></script>
     <title>Sportradar Demo</title>
   </head>
-  <body></body>
+  <body>
+    <button id="ofSport">Get all soccer events</button>
+    <h1>Events</h1>
+    <ul></ul>
+
+    <form class="form">
+      <label for="date">Event Date</label>
+      <input name="Event_Date" type="date" id="eventDate" />
+      <br />
+      <label for="time">Event Time</label>
+      <input name="Event_Time" type="time" id="eventTime" />
+      <br />
+      <label for="sport">Event Sport</label>
+      <select id="sport" name="_Sport_ID">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+      </select>
+      <br />
+      <label for="team1">Event Team 1</label>
+      <select id="team1" name="_Team1_ID">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+      </select>
+      <br />
+      <label for="team2">Event Team 2</label>
+      <select id="team2" name="_Team2_ID">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+      </select>
+      <br />
+      <button type="submit">Create Event</button>
+    </form>
+  </body>
 </html>

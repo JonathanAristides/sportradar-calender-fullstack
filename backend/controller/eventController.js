@@ -22,7 +22,6 @@ module.exports.getAllEventsAfterYesterday = async (req, res) => {
         INNER JOIN sports ON events._Sport_ID=sports.Sport_ID
         INNER JOIN teams  ON events._Team1_ID=teams.Team_ID
         INNER JOIN teams t2 ON events._Team2_ID=t2.Team_ID
-        WHERE events.Event_Date >= CURRENT_DATE
         ORDER BY events.Event_Date;`,
       (error, rows) => {
         connection.release();
@@ -145,9 +144,7 @@ module.exports.deleteEventOfId = async (req, res) => {
 module.exports.createNewEvent = async (req, res) => {
   pool.getConnection((error, connection) => {
     if (error) throw error;
-
     const params = req.body;
-
     connection.query(
       `INSERT INTO events SET Event_Date = ?, Event_Time = ?, _Sport_ID = ?, _Team1_ID = ?, _Team2_ID = ?`,
       [
