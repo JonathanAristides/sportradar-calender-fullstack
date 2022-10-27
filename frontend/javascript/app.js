@@ -1,0 +1,69 @@
+//imports
+
+import Event from "./event.js";
+import Storage from "./storage.js";
+import Ui from "./ui.js";
+
+//Events
+
+//Display events
+document.addEventListener("DOMContentLoaded", Ui.displayAllEvents);
+document
+  .querySelector("#allSport")
+  .addEventListener("click", Ui.displayAllEvents);
+
+//Display event of sport
+const filters = document.querySelectorAll(".filter");
+filters.forEach((filter) => {
+  filter.addEventListener("click", () =>
+    Ui.displayEventsOfSport(filter.dataset.sportid)
+  );
+});
+
+//Add an event
+const formElement = document.querySelector(".form");
+
+formElement.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const formData = new FormData(formElement);
+  const data = Object.fromEntries(formData);
+
+  //Simple Validation
+  if (
+    data.Event_Date === "" ||
+    data.Event_Time === "" ||
+    data._Sport_ID === "" ||
+    data._Team1_ID === "" ||
+    data._Team2_ID === ""
+  ) {
+    Ui.showAlert("Please fill all fields", "failed");
+  } else {
+    const event = new Event(
+      data.Event_Date,
+      data.Event_Time,
+      data._Sport_ID,
+      data._Team1_ID,
+      data._Team2_ID
+    );
+
+    //Add event to UI
+    Ui.addEventToEvents(event);
+
+    //Event created Message
+    Ui.showAlert("Event created", "success");
+
+    //Send to storage
+    Storage.addEvent(data);
+
+    //Clear Form fields
+    Ui.clearFormFields();
+  }
+});
+
+//Remove an event
+document.querySelector(".container").addEventListener("click", (e) => {
+  Ui.deleteEvent(e.target);
+});
+
+//Event removed Message
+Ui.showAlert("Event removed", "removed");

@@ -4,13 +4,21 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script type="module" src="../javascript/testing.js"></script>
+    <script type="module" src="../javascript/app.js"></script>
     <title>Sportradar Demo</title>
   </head>
   <body>
-    <button id="ofSport">Get all soccer events</button>
+    <button id="allSport">GET ALL EVENTS</button>
+    <button data-sportId="soccer" class="filter">Get all soccer events</button>
+    <button data-sportId="basketball" class="filter">
+      Get all basketball events
+    </button>
+    <button data-sportId="icehockey" class="filter">
+      Get all icehockey events
+    </button>
+
     <h1>Events</h1>
-    <ul></ul>
+    <div class="container"></div>
 
     <form class="form">
       <label for="date">Event Date</label>
@@ -21,6 +29,7 @@
       <br />
       <label for="sport">Event Sport</label>
       <select id="sport" name="_Sport_ID">
+        <option selected value=""></option>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -28,6 +37,7 @@
       <br />
       <label for="team1">Event Team 1</label>
       <select id="team1" name="_Team1_ID">
+        <option selected value=""></option>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -35,6 +45,7 @@
       <br />
       <label for="team2">Event Team 2</label>
       <select id="team2" name="_Team2_ID">
+        <option selected value=""></option>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>

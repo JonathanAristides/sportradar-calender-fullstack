@@ -30,23 +30,23 @@
 //   })
 //   .catch((error) => console.log("Oh no, ", error.message));
 
-//Getting all Events
-const getAllEvents = async () => {
-  const response = await fetch("http://localhost:5000/events");
-  const events = await response.json();
-  // console.log(events);
-  return events;
-};
+// //Getting all Events
+// const getAllEvents = async () => {
+//   const response = await fetch("http://localhost:5000/events");
+//   const events = await response.json();
+//   // console.log(events);
+//   return events;
+// };
 
-getAllEvents()
-  .then((events) => {
-    console.log(events);
-    events.forEach((event) => {
-      const markup = `<li>${event.Sport_Name} | ${event.Team_1} | ${event.Team_2}<li/>`;
-      document.querySelector("ul").insertAdjacentHTML("beforeend", markup);
-    });
-  })
-  .catch((error) => console.log("Oh no", error.message));
+// getAllEvents()
+//   .then((events) => {
+//     console.log(events);
+//     events.forEach((event) => {
+//       const markup = `<li>${event.Sport_Name} | ${event.Team_1} | ${event.Team_2}<li/>`;
+//       document.querySelector("ul").insertAdjacentHTML("beforeend", markup);
+//     });
+//   })
+//   .catch((error) => console.log("Oh no", error.message));
 
 //Get all Events of Sport
 
@@ -57,27 +57,27 @@ getAllEvents()
 //   return events;
 // };
 
-const eventsOfSport = document.getElementById("ofSport");
+// const eventsOfSport = document.getElementById("ofSport");
 
-eventsOfSport.addEventListener("click", (element) => {
-  element.preventDefault();
-  //Get all Events of Sport
-  const getAllEventsOfSport = async () => {
-    const response = await fetch("http://localhost:5000/events/soccer");
-    const events = await response.json();
-    return events;
-  };
-  getAllEventsOfSport()
-    .then((events) => {
-      document.querySelector("ul").innerHTML = "";
-      console.log(events);
-      events.forEach((event) => {
-        const markup = `<li>${event.Sport_Name} | ${event.Team_1} | ${event.Team_2}<li/>`;
-        document.querySelector("ul").innerHTML += markup;
-      });
-    })
-    .catch((error) => console.log("Oh no", error.message));
-});
+// eventsOfSport.addEventListener("click", (element) => {
+//   element.preventDefault();
+
+// //Get all Events of Sport
+// const getAllEventsOfSport = async () => {
+//   const response = await fetch("http://localhost:5000/events/soccer");
+//   const events = await response.json();
+//   return events;
+// };
+// getAllEventsOfSport()
+//   .then((events) => {
+//     document.querySelector("ul").innerHTML = "";
+//     console.log(events);
+//     events.forEach((event) => {
+//       const markup = `<li>${event.Sport_Name} | ${event.Team_1} | ${event.Team_2}<li/>`;
+//       document.querySelector("ul").innerHTML += markup;
+//     });
+//   })
+//   .catch((error) => console.log("Oh no", error.message));
 
 // getAllEventsOfSport()
 //   .then((events) => {
