@@ -36,25 +36,26 @@ export default class Ui {
     const eventsList = document.querySelector(".container");
     const eventRow = document.createElement("div");
     eventRow.innerHTML = `
-    <div>
+    <div id="${event.Event_ID}">
         <div>${date}</div>
         <div>${time}</div>
         <div>${event.Sport_Name}</div>
         <div>${event.Team_1}</div>
         <div>${event.Team_2}</div>
-        <div><a href="#" class="alert delete">X</a><div>
+        <div><a href="#" class="delete">X</a><div>
     </div>
     <br/>`;
 
     eventsList.appendChild(eventRow);
   }
 
-  //deleteEvent((((((OPTIONAL))))))
-  // static deleteEvent(targetElement) {
-  //   if (targetElement.classList.contains("delete")) {
-  //     targetElement.parentElement.parentElement.remove();
-  //   }
-  // }
+  //deleteEvent
+  static deleteEvent(targetElement) {
+    if (targetElement.classList.contains("delete")) {
+      targetElement.parentElement.parentElement.remove();
+    }
+    Storage.removeEvent(targetElement.parentElement.parentElement.id);
+  }
 
   //Container empty check
   static checkIfHtmlContainerIsEmpty() {
@@ -74,7 +75,8 @@ export default class Ui {
     container.insertAdjacentElement("afterbegin", div);
 
     //Remove after 2 Seconds
-    setTimeout(() => document.querySelector(".alert").remove(), 2000);
+
+    setTimeout(() => document.querySelector(".alert").remove(), 3000);
   }
 
   //clear Form fields

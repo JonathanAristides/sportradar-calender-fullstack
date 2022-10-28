@@ -32,8 +32,15 @@ export default class Storage {
     console.log(data._Sport_ID);
   }
 
-  //delete event((((OPTIONAL!))))
-  static async removeEvent() {}
+  //delete event
+  static async removeEvent(id) {
+    console.log(id);
+    await fetch(`http://localhost:5000/event/${id}`, { method: "DELETE" })
+      .then(console.log(`Event with ${id} has been deleted`))
+      .catch((error) => {
+        console.log("Something went wrong " + error.message);
+      });
+  }
 
   //get all sports
   static async getSports() {
