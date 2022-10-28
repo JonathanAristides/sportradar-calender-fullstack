@@ -16,10 +16,8 @@
     <button data-sportId="icehockey" class="filter">
       Get all icehockey events
     </button>
-
-    <h1>Events</h1>
-    <div class="container"></div>
-
+    <br />
+    <br />
     <form class="form">
       <label for="date">Event Date</label>
       <input name="Event_Date" type="date" id="eventDate" />
@@ -28,30 +26,24 @@
       <input name="Event_Time" type="time" id="eventTime" />
       <br />
       <label for="sport">Event Sport</label>
-      <select id="sport" name="_Sport_ID">
-        <option selected value=""></option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-      </select>
+      <select id="sport" name="_Sport_ID"></select>
       <br />
-      <label for="team1">Event Team 1</label>
-      <select id="team1" name="_Team1_ID">
-        <option selected value=""></option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-      </select>
+      <div id="formSelects">
+        <label for="team1">Event Team 1</label>
+        <select class="select" id="team1" name="_Team1_ID">
+          <option selected value=""></option>
+        </select>
+        <br />
+        <label for="team2">Event Team 2</label>
+        <select class="select" id="team2" name="_Team2_ID">
+          <option selected value=""></option>
+        </select>
+      </div>
       <br />
-      <label for="team2">Event Team 2</label>
-      <select id="team2" name="_Team2_ID">
-        <option selected value=""></option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-      </select>
-      <br />
-      <button type="submit">Create Event</button>
+      <button id="formButton" type="submit">Create Event</button>
     </form>
+
+    <h1>Events</h1>
+    <div class="container"></div>
   </body>
 </html>

@@ -37,7 +37,6 @@ export default class Ui {
     const eventRow = document.createElement("div");
     eventRow.innerHTML = `
     <div>
-
         <div>${date}</div>
         <div>${time}</div>
         <div>${event.Sport_Name}</div>
@@ -51,14 +50,13 @@ export default class Ui {
   }
 
   //deleteEvent((((((OPTIONAL))))))
-  static deleteEvent(targetElement) {
-    if (targetElement.classList.contains("delete")) {
-      targetElement.parentElement.parentElement.remove();
-    }
-  }
+  // static deleteEvent(targetElement) {
+  //   if (targetElement.classList.contains("delete")) {
+  //     targetElement.parentElement.parentElement.remove();
+  //   }
+  // }
 
   //Container empty check
-
   static checkIfHtmlContainerIsEmpty() {
     if (!document.querySelector(".container").innerHTML == "") {
       document.querySelector(".container").innerHTML = "";
@@ -75,8 +73,8 @@ export default class Ui {
     const container = document.querySelector(".container");
     container.insertAdjacentElement("afterbegin", div);
 
-    // //Remove after 2 Seconds
-    // setTimeout(() => document.querySelector(".alert").remove(), 2000);
+    //Remove after 2 Seconds
+    setTimeout(() => document.querySelector(".alert").remove(), 2000);
   }
 
   //clear Form fields
@@ -86,5 +84,51 @@ export default class Ui {
     document.querySelector("#sport").value = "";
     document.querySelector("#team1").value = "";
     document.querySelector("#team2").value = "";
+  }
+
+  //display sport options in select
+  static displaySportOptions() {
+    const sports = Storage.getSports()
+      .then((sports) => {
+        Ui.clearSelects();
+        const selectOptions = document.getElementById("sport");
+        if (!selectOptions.options.length == 1) {
+          sports.forEach((sport) => {
+            let newOption = new Option(sport.Sport_Name, sport.Sport_ID);
+            const select = document.getElementById("sport");
+            select.add(newOption, undefined);
+          });
+        }
+      })
+      .catch((error) => console.log("Oh no", error.message));
+  }
+
+  //Display team options
+  static addToSelect(sport, selectId) {
+    const select = document.getElementById(`${selectId}`);
+    if (select.options.length <= 1) {
+      const teams = Storage.getTeams(sport).then((teams) => {
+        teams.forEach((team) => {
+          let newOption = new Option(sport + " " + team.Team_Name, sport);
+          newOption.setAttribute("sportID", `${sport}`);
+          select.add(newOption, undefined);
+        });
+      });
+    }
+  }
+
+  //Clearing team select fields
+  static clearSelects() {
+    document.getElementById("team1").value = "";
+    document.getElementById("team2").value = "";
+    const team1Options = document.querySelector("#team1").options;
+    const team2Options = document.querySelector("#team2").options;
+
+    while (team1Options.length > 1) {
+      const team1 = team1Options.remove(1);
+    }
+    while (team2Options.length > 1) {
+      const team2 = team2Options.remove(1);
+    }
   }
 }

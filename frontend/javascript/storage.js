@@ -29,12 +29,25 @@ export default class Storage {
       .catch((error) => {
         console.log("Something went wrong " + error.message);
       });
+    console.log(data._Sport_ID);
   }
 
   //delete event((((OPTIONAL!))))
-  static removeEvent() {}
+  static async removeEvent() {}
+
   //get all sports
-  static getsports() {}
+  static async getSports() {
+    const response = await fetch("http://localhost:5000/sports");
+    const events = await response.json();
+
+    return events;
+  }
+
   //get all teams of sport
-  static getTeams() {}
+  static async getTeams(sport) {
+    const response = await fetch(`http://localhost:5000/teamsOfSport/${sport}`);
+    const events = await response.json();
+
+    return events;
+  }
 }

@@ -200,3 +200,43 @@ module.exports.updateEvent = async (req, res) => {
     );
   });
 };
+
+//Get sports
+module.exports.getSports = async (req, res) => {
+  pool.getConnection((error, connection) => {
+    if (error) throw error;
+
+    connection.query(`SELECT * FROM sports`, (error, rows) => {
+      connection.release();
+
+      if (error) {
+        console.log(error);
+        return;
+      }
+
+      res.send(rows);
+    });
+  });
+};
+
+//Get teams of sport
+module.exports.getTeamsOfSport = async (req, res) => {
+  pool.getConnection((error, connection) => {
+    if (error) throw error;
+
+    connection.query(
+      `SELECT * FROM teams WHERE _Team_Sport_ID = ?`,
+      [req.params.id],
+      (error, rows) => {
+        connection.release();
+
+        if (error) {
+          console.log(error);
+          return;
+        }
+
+        res.send(rows);
+      }
+    );
+  });
+};

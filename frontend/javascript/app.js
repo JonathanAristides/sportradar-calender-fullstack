@@ -6,6 +6,22 @@ import Ui from "./ui.js";
 
 //Events
 
+//Display SportSelect Options
+document
+  .getElementById("sport")
+  .addEventListener("DOMContentLoaded", Ui.displaySportOptions());
+document.getElementById("sport").addEventListener("change", () => {
+  Ui.displaySportOptions();
+});
+
+//Display TeamSelect Options
+const selects = document.querySelectorAll(".select");
+selects.forEach((select) => {
+  select.addEventListener("click", (e) => {
+    Ui.addToSelect(document.getElementById("sport").value, e.target.id);
+  });
+});
+
 //Display events
 document.addEventListener("DOMContentLoaded", Ui.displayAllEvents);
 document
@@ -25,6 +41,7 @@ const formElement = document.querySelector(".form");
 
 formElement.addEventListener("submit", (e) => {
   e.preventDefault();
+
   const formData = new FormData(formElement);
   const data = Object.fromEntries(formData);
 
@@ -37,6 +54,8 @@ formElement.addEventListener("submit", (e) => {
     data._Team2_ID === ""
   ) {
     Ui.showAlert("Please fill all fields", "failed");
+  } else if (data._Team1_ID === data._Team2_ID) {
+    Ui.showAlert("Teams must be different", "failed");
   } else {
     const event = new Event(
       data.Event_Date,
@@ -60,10 +79,10 @@ formElement.addEventListener("submit", (e) => {
   }
 });
 
-//Remove an event
-document.querySelector(".container").addEventListener("click", (e) => {
-  Ui.deleteEvent(e.target);
-});
+// //Remove an event
+// document.querySelector(".container").addEventListener("click", (e) => {
+//   Ui.deleteEvent(e.target);
+// });
 
 //Event removed Message
 Ui.showAlert("Event removed", "removed");
