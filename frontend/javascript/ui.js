@@ -33,16 +33,17 @@ export default class Ui {
   static addEventToEvents(event) {
     const date = new Date(event.Event_Date).toLocaleDateString("uk-Uk");
     const time = event.Event_Time.slice(0, 5);
-    const eventsList = document.querySelector(".container");
+    const eventsList = document.querySelector(".eventsContainer");
     const eventRow = document.createElement("div");
+    eventRow.classList.add("singleEventContainer");
     eventRow.innerHTML = `
-    <div id="${event.Event_ID}">
+    <div class="event" id="${event.Event_ID}">
         <div>${date}</div>
         <div>${time}</div>
         <div>${event.Sport_Name}</div>
         <div>${event.Team_1}</div>
         <div>${event.Team_2}</div>
-        <div><a href="#" class="delete">X</a><div>
+        <div><a href="#" class="deletebutton"><img class=" delete deletebuttonImage" src="../../assets/x.png" alt="delete" /></a><div>
     </div>
     <br/>`;
 
@@ -51,16 +52,20 @@ export default class Ui {
 
   //deleteEvent
   static deleteEvent(targetElement) {
+    console.log(targetElement.parentElement.parentElement.parentElement);
     if (targetElement.classList.contains("delete")) {
-      targetElement.parentElement.parentElement.remove();
+      targetElement.parentElement.parentElement.parentElement.remove();
     }
-    Storage.removeEvent(targetElement.parentElement.parentElement.id);
+
+    Storage.removeEvent(
+      targetElement.parentElement.parentElement.parentElement.id
+    );
   }
 
   //Container empty check
   static checkIfHtmlContainerIsEmpty() {
-    if (!document.querySelector(".container").innerHTML == "") {
-      document.querySelector(".container").innerHTML = "";
+    if (!document.querySelector(".eventsContainer").innerHTML == "") {
+      document.querySelector(".eventsContainer").innerHTML = "";
     }
   }
 
@@ -71,7 +76,7 @@ export default class Ui {
     div.className = `alert ${className}`;
     div.appendChild(document.createTextNode(message));
 
-    const container = document.querySelector(".container");
+    const container = document.querySelector(".eventsContainer");
     container.insertAdjacentElement("afterbegin", div);
 
     //Remove after 2 Seconds

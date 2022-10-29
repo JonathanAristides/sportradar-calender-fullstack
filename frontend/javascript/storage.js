@@ -40,6 +40,7 @@ export default class Storage {
       .catch((error) => {
         console.log("Something went wrong " + error.message);
       });
+    setTimeout(() => location.reload(), 500);
   }
 
   //get all sports

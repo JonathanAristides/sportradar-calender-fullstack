@@ -79,10 +79,10 @@ formElement.addEventListener("submit", (e) => {
   }
 });
 
-// //Remove an event
-document.querySelector(".container").addEventListener("click", (e) => {
+//Remove an event
+document.querySelector(".eventsContainer").addEventListener("click", (e) => {
   Ui.deleteEvent(e.target);
+  Ui.showAlert("Event removed", "removed");
 });
 
 //Event removed Message
-Ui.showAlert("Event removed", "removed");
