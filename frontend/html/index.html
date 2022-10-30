@@ -28,16 +28,25 @@
           <button id="formToggleButton">Create Event</button>
 
           <div id="selectionContainer">
-            <button id="allSport" class="activeButton">SEE ALL EVENTS</button>
-            <button data-sportId="soccer" class="filter selectButton">
+            <button id="allSport" class="selectButton">SEE ALL EVENTS</button>
+            <button
+              id="soccer"
+              data-sportId="soccer"
+              class="filter selectButton">
               Soccer
             </button>
 
-            <button data-sportId="basketball" class="filter selectButton">
+            <button
+              id="basketball"
+              data-sportId="basketball"
+              class="filter selectButton">
               Basketball
             </button>
 
-            <button data-sportId="icehockey" class="filter selectButton">
+            <button
+              id="icehockey"
+              data-sportId="icehockey"
+              class="filter selectButton">
               Icehockey
             </button>
 
@@ -46,28 +55,23 @@
 
           <div class="eventsContainer"></div>
 
-          <form class="form">
-            <label for="date">Event Date</label>
+          <form id="form" class="form">
             <input name="Event_Date" type="date" id="eventDate" />
-            <br />
-            <label for="time">Event Time</label>
+
             <input name="Event_Time" type="time" id="eventTime" />
-            <br />
-            <label for="sport">Event Sport</label>
+
             <select id="sport" name="_Sport_ID"></select>
-            <br />
+
             <div id="formSelects">
-              <label for="team1">Event Team 1</label>
               <select class="select" id="team1" name="_Team1_ID">
                 <option selected value=""></option>
               </select>
-              <br />
-              <label for="team2">Event Team 2</label>
+
               <select class="select" id="team2" name="_Team2_ID">
                 <option selected value=""></option>
               </select>
             </div>
-            <br />
+
             <button id="formButton" type="submit">Create Event</button>
           </form>
         </div>

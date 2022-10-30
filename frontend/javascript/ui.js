@@ -38,12 +38,20 @@ export default class Ui {
     eventRow.classList.add("singleEventContainer");
     eventRow.innerHTML = `
     <div class="event" id="${event.Event_ID}">
+      <div class="dateAndTime">
         <div>${date}</div>
+        <hr/>
         <div>${time}</div>
+      </div>
+      <div class="eventSport">
         <div>${event.Sport_Name}</div>
+      </div>
+      <div class="eventTeams">
         <div>${event.Team_1}</div>
+        <p id="vs">vs</p>
         <div>${event.Team_2}</div>
-        <div><a href="#" class="deletebutton"><img class=" delete deletebuttonImage" src="../../assets/x.png" alt="delete" /></a><div>
+      </div>
+        <div class="deletebutton" ><a href="#" ><img class=" delete deletebuttonImage" src="../../assets/x.png" alt="delete" /></a><div>
     </div>
     <br/>`;
 
@@ -81,7 +89,7 @@ export default class Ui {
 
     //Remove after 2 Seconds
 
-    setTimeout(() => document.querySelector(".alert").remove(), 3000);
+    setTimeout(() => document.querySelector(".alert").remove(), 2000);
   }
 
   //clear Form fields
@@ -91,6 +99,8 @@ export default class Ui {
     document.querySelector("#sport").value = "";
     document.querySelector("#team1").value = "";
     document.querySelector("#team2").value = "";
+
+    Ui.formToggle();
   }
 
   //display sport options in select
@@ -116,7 +126,7 @@ export default class Ui {
     if (select.options.length <= 1) {
       const teams = Storage.getTeams(sport).then((teams) => {
         teams.forEach((team) => {
-          let newOption = new Option(sport + " " + team.Team_Name, sport);
+          let newOption = new Option(team.Team_Name, team.Team_ID);
           newOption.setAttribute("sportID", `${sport}`);
           select.add(newOption, undefined);
         });
@@ -137,5 +147,16 @@ export default class Ui {
     while (team2Options.length > 1) {
       const team2 = team2Options.remove(1);
     }
+  }
+
+  //toggle form visibility
+  static formToggle() {
+    document.getElementById("form").classList.toggle("formActive");
+  }
+
+  //toggle formbutton background
+
+  static formButtonToggle(e) {
+    e.target.classList.toggle("formToggleButtonActive");
   }
 }

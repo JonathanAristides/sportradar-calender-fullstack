@@ -29,7 +29,6 @@ export default class Storage {
       .catch((error) => {
         console.log("Something went wrong " + error.message);
       });
-    console.log(data._Sport_ID);
   }
 
   //delete event
@@ -40,7 +39,7 @@ export default class Storage {
       .catch((error) => {
         console.log("Something went wrong " + error.message);
       });
-    setTimeout(() => location.reload(), 500);
+    setTimeout(() => location.reload(), 1000);
   }
 
   //get all sports

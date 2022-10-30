@@ -43,6 +43,7 @@ formElement.addEventListener("submit", (e) => {
   e.preventDefault();
 
   const formData = new FormData(formElement);
+
   const data = Object.fromEntries(formData);
 
   //Simple Validation
@@ -64,6 +65,8 @@ formElement.addEventListener("submit", (e) => {
       data._Team1_ID,
       data._Team2_ID
     );
+    //Change form visiblity
+    Ui.formToggle();
 
     //Add event to UI
     Ui.addEventToEvents(event);
@@ -82,7 +85,24 @@ formElement.addEventListener("submit", (e) => {
 //Remove an event
 document.querySelector(".eventsContainer").addEventListener("click", (e) => {
   Ui.deleteEvent(e.target);
-  Ui.showAlert("Event removed", "removed");
+  Ui.showAlert("Event removed", "success");
 });
 
-//Event removed Message
+//toggle form
+document.getElementById("formToggleButton").addEventListener("click", (e) => {
+  Ui.formToggle();
+});
+
+//formToggleButton
+document.getElementById("formToggleButton").addEventListener("click", (e) => {
+  Ui.formButtonToggle(e);
+});
+
+//Display active tab
+
+// const selectButtons = document.querySelectorAll(".selectButton");
+// // selectButtons.forEach((selectButton) => {
+// //   selectButton.addEventListener("click", (e) => {
+// //     Ui.displayActiveTab(e);
+// //   });
+// // });

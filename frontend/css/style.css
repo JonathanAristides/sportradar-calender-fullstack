@@ -18,13 +18,14 @@ button {
   font-size: 1rem;
 }
 
-.activeButton {
-  font-weight: bold;
-  color: black;
+.selectButton {
+  color: #ababab;
+  transition: 0.1s;
 }
 
-.selectButton {
-  color: lightgrey;
+.selectButton:hover {
+  color: black;
+  font-weight: bold;
 }
 
 /* header styling */
@@ -73,15 +74,19 @@ main {
   top: -2.5rem;
   height: 2.5rem;
   padding: 0.5rem 1.5rem 0.5rem 1.5rem;
-  background-color: rgb(204, 204, 204);
   filter: drop-shadow(0px 0px 0px white);
-  transition: 0.2s;
+  transition: 0.1s;
   font-weight: lighter;
   font-size: 1rem;
 }
 
 #formToggleButton:hover {
-  background-color: #eaeaea;
+  transform: scale(1.1);
+}
+
+.formToggleButtonActive {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
 }
 
 #selectionContainer {
@@ -118,6 +123,37 @@ main {
   background-color: #f6f6f6;
   position: relative;
   height: 10rem;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+}
+
+.dateAndTime,
+.eventSport,
+.eventTeams {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  font-size: 1rem;
+}
+
+#vs {
+  font-weight: bold;
+  font-size: 0.5rem;
+}
+
+.eventSport {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.dateAndTime hr {
+  width: 60%;
+  color: black;
+  border: none;
+  height: 0.01rem;
+  background-color: black;
 }
 
 .deletebutton {
@@ -134,4 +170,63 @@ form {
   background-color: lightblue;
   position: absolute;
   display: none;
+}
+
+.formActive {
+  justify-self: center;
+  align-items: center;
+  justify-items: center;
+  grid-row-gap: 0.5rem;
+  display: grid;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 3rem;
+}
+#eventDate,
+#eventTime,
+#sport,
+#team1,
+#team2 {
+  height: 30px;
+  min-width: 15rem;
+  width: 100%;
+}
+
+form label {
+  color: white;
+  text-align: center;
+}
+
+#formSelects {
+  display: grid;
+  grid-row-gap: 0.5rem;
+}
+#formSelects select {
+  width: 100%;
+}
+
+#formButton {
+  padding: 0.5rem 1rem;
+}
+
+/* alert classes */
+
+.alert {
+  position: absolute;
+  top: -5.5rem;
+  color: black;
+  font-weight: lighter;
+  z-index: 1;
+  background-color: lightgray;
+  padding: 0.2rem 1rem;
+}
+
+.success {
+  background-color: green;
+  color: white;
+}
+
+.failed {
+  background-color: red;
+  color: white;
 }
