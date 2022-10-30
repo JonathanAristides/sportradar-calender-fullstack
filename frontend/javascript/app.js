@@ -79,6 +79,8 @@ formElement.addEventListener("submit", (e) => {
 
     //Clear Form fields
     Ui.clearFormFields();
+
+    setTimeout(() => location.reload(), 1000);
   }
 });
 

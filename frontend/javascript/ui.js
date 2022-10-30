@@ -56,6 +56,7 @@ export default class Ui {
     <br/>`;
 
     eventsList.appendChild(eventRow);
+    location.re;
   }
 
   //deleteEvent
