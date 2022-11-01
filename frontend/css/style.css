@@ -138,7 +138,7 @@ main {
   font-size: 1rem;
 }
 
-#vs {
+.vs {
   font-weight: bold;
   font-size: 0.5rem;
 }
@@ -162,6 +162,16 @@ main {
   right: 0.5rem;
 }
 .deletebuttonImage {
+  width: 1.1rem;
+}
+
+.updatebutton {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+}
+
+.updatebuttonImage {
   width: 1.1rem;
 }
 
