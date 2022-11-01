@@ -87,7 +87,7 @@ formElement.addEventListener("submit", (e) => {
 //Remove an event
 document.querySelector(".eventsContainer").addEventListener("click", (e) => {
   Ui.deleteEvent(e.target);
-  Ui.showAlert("Event removed", "success");
+  Ui.updateEvent(e.target);
 });
 
 //toggle form
@@ -99,12 +99,3 @@ document.getElementById("formToggleButton").addEventListener("click", (e) => {
 document.getElementById("formToggleButton").addEventListener("click", (e) => {
   Ui.formButtonToggle(e);
 });
-
-//Display active tab
-
-// const selectButtons = document.querySelectorAll(".selectButton");
-// // selectButtons.forEach((selectButton) => {
-// //   selectButton.addEventListener("click", (e) => {
-// //     Ui.displayActiveTab(e);
-// //   });
-// // });

@@ -48,10 +48,11 @@ export default class Ui {
       </div>
       <div class="eventTeams">
         <div>${event.Team_1}</div>
-        <p id="vs">vs</p>
+        <p class="vs">vs</p>
         <div>${event.Team_2}</div>
       </div>
-        <div class="deletebutton" ><a href="#" ><img class=" delete deletebuttonImage" src="../../assets/x.png" alt="delete" /></a><div>
+        <div class="deletebutton" ><a class="deleteLink" href="#" ><img class=" delete deletebuttonImage" src="../../assets/x.png" alt="delete" /></a></div>
+        <div class="updatebutton" ><a class ="updateLink" href="#" ><img class=" update updatebuttonImage" src="../../assets/edit.png" alt="update" /></a></div>
     </div>
     <br/>`;
 
@@ -61,15 +62,18 @@ export default class Ui {
 
   //deleteEvent
   static deleteEvent(targetElement) {
-    console.log(targetElement.parentElement.parentElement.parentElement);
     if (targetElement.classList.contains("delete")) {
       targetElement.parentElement.parentElement.parentElement.remove();
-    }
 
-    Storage.removeEvent(
-      targetElement.parentElement.parentElement.parentElement.id
-    );
+      Ui.showAlert("Event removed", "success");
+      Storage.removeEvent(
+        targetElement.parentElement.parentElement.parentElement.id
+      );
+    }
   }
+
+  //updateEvent
+  static updateEvent(targetElement) {}
 
   //Container empty check
   static checkIfHtmlContainerIsEmpty() {
