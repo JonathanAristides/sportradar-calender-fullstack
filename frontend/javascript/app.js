@@ -46,6 +46,7 @@ formElement.addEventListener("submit", (e) => {
 
   const data = Object.fromEntries(formData);
 
+  console.log(data);
   //Simple Validation
   if (
     data.Event_Date === "" ||
@@ -59,14 +60,15 @@ formElement.addEventListener("submit", (e) => {
     Ui.showAlert("Teams must be different", "failed");
   } else {
     const event = new Event(
+      data.Event_ID,
       data.Event_Date,
       data.Event_Time,
       data._Sport_ID,
       data._Team1_ID,
       data._Team2_ID
     );
-    //Change form visiblity
-    Ui.formToggle();
+
+    console.log(data.Event_ID);
 
     //Add event to UI
     Ui.addEventToEvents(event);
@@ -84,7 +86,7 @@ formElement.addEventListener("submit", (e) => {
   }
 });
 
-//Remove an event
+//Remove and Update anevent
 document.querySelector(".eventsContainer").addEventListener("click", (e) => {
   Ui.deleteEvent(e.target);
   Ui.updateEvent(e.target);

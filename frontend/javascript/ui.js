@@ -51,29 +51,48 @@ export default class Ui {
         <p class="vs">vs</p>
         <div>${event.Team_2}</div>
       </div>
-        <div class="deletebutton" ><a class="deleteLink" href="#" ><img class=" delete deletebuttonImage" src="../../assets/x.png" alt="delete" /></a></div>
-        <div class="updatebutton" ><a class ="updateLink" href="#" ><img class=" update updatebuttonImage" src="../../assets/edit.png" alt="update" /></a></div>
+        <a class="deleteLink" href="#" ><img class=" delete deletebuttonImage" src="../../assets/x.png" alt="delete" /></a>
+        <a class ="updateLink" href="#" ><img class=" update updatebuttonImage" src="../../assets/edit.png" alt="update" /></a>
     </div>
     <br/>`;
 
     eventsList.appendChild(eventRow);
-    location.re;
   }
 
   //deleteEvent
   static deleteEvent(targetElement) {
     if (targetElement.classList.contains("delete")) {
       targetElement.parentElement.parentElement.parentElement.remove();
-
       Ui.showAlert("Event removed", "success");
-      Storage.removeEvent(
-        targetElement.parentElement.parentElement.parentElement.id
-      );
+      Storage.removeEvent(targetElement.parentElement.parentElement.id);
     }
   }
 
   //updateEvent
-  static updateEvent(targetElement) {}
+  static updateEvent(targetElement) {
+    if (targetElement.classList.contains("update")) {
+      const eventContainer = targetElement.parentElement.parentElement;
+
+      const eventId = eventContainer.id;
+      const eventDate = eventContainer
+        .querySelector(".dateAndTime")
+        .getElementsByTagName("div")[0].innerText;
+      const eventTime = eventContainer
+        .querySelector(".dateAndTime")
+        .getElementsByTagName("div")[1].innerText;
+      const sportName = eventContainer
+        .querySelector(".eventSport")
+        .getElementsByTagName("div")[0].innerText;
+      const team1Name = eventContainer
+        .querySelector(".eventTeams")
+        .getElementsByTagName("div")[0].innerText;
+      const team2Name = eventContainer
+        .querySelector(".eventTeams")
+        .getElementsByTagName("div")[1].innerText;
+
+      // console.log(eventId, eventDate, sportName, team1Name, team2Name);
+    }
+  }
 
   //Container empty check
   static checkIfHtmlContainerIsEmpty() {
@@ -155,7 +174,8 @@ export default class Ui {
   }
 
   //toggle form visibility
-  static formToggle() {
+  static formToggle(changeTo) {
+    console.log("formtoggle fired");
     document.getElementById("form").classList.toggle("formActive");
   }
 

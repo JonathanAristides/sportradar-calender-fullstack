@@ -20,7 +20,7 @@ button {
 
 .selectButton {
   color: #ababab;
-  transition: 0.1s;
+  transition: 0s;
 }
 
 .selectButton:hover {
@@ -75,7 +75,7 @@ main {
   height: 2.5rem;
   padding: 0.5rem 1.5rem 0.5rem 1.5rem;
   filter: drop-shadow(0px 0px 0px white);
-  transition: 0.1s;
+  transition: 0s;
   font-weight: lighter;
   font-size: 1rem;
 }
@@ -87,6 +87,14 @@ main {
 .formToggleButtonActive {
   background-color: rgba(0, 0, 0, 0.8);
   color: white;
+}
+
+#updateForm {
+  background-color: lightcoral;
+  position: absolute;
+  width: 20rem;
+  padding: 1rem;
+  justify-self: center;
 }
 
 #selectionContainer {
@@ -156,16 +164,19 @@ main {
   background-color: black;
 }
 
-.deletebutton {
+.deleteLink {
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
+  width: 1.1rem;
+  aspect-ratio: 1/1;
 }
 .deletebuttonImage {
-  width: 1.1rem;
+  width: 100%;
+  height: 100%;
 }
 
-.updatebutton {
+.updateLink {
   position: absolute;
   top: 0.5rem;
   left: 0.5rem;
@@ -176,7 +187,7 @@ main {
 }
 
 /* form styling */
-form {
+#form {
   background-color: lightblue;
   position: absolute;
   display: none;
